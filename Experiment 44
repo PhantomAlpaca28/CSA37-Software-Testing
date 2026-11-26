@@ -1,0 +1,73 @@
+Experiment 44: To Automate File Upload Functionality on a Web Application Using Selenium WebDriver
+
+AIM
+To write a Selenium WebDriver program to automate file upload functionality on a web application.
+
+## ALGORITHM
+1. Start the program.
+2. Launch the Chrome browser using Selenium WebDriver.
+3. Open the file upload practice webpage.
+4. Locate the file input element.
+5. Specify the file path using `sendKeys()`.
+6. Click the Upload button.
+7. Verify the uploaded file name.
+8. Close the browser.
+
+## CODE
+
+**File name: `FileUploadTest.java`**
+
+```java
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class FileUploadTest {
+
+    @Test
+    public void uploadFile() {
+
+        WebDriver driver = new ChromeDriver();
+
+        driver.get("https://the-internet.herokuapp.com/upload");
+
+        driver.manage().window().maximize();
+
+        WebElement uploadFile = driver.findElement(By.id("file-upload"));
+
+        uploadFile.sendKeys("C:\\Users\\Public\\sample.txt");
+
+        driver.findElement(By.id("file-submit")).click();
+
+        String uploadedFile = driver.findElement(
+            By.id("uploaded-files")
+        ).getText();
+
+        System.out.println("Uploaded File: " + uploadedFile);
+
+        assertEquals("sample.txt", uploadedFile);
+
+        System.out.println("File uploaded successfully.");
+
+        driver.quit();
+    }
+}
+```
+
+## INPUT
+- Website: https://the-internet.herokuapp.com/upload
+- File name: `sample.txt`
+- File path: `C:\Users\Public\sample.txt`
+
+## EXPECTED OUTPUT
+
+```text
+Uploaded File: sample.txt
+File uploaded successfully.
+```
+
+## RESULT
+Thus, file upload functionality was automated successfully using Selenium WebDriver and the uploaded file was verified.

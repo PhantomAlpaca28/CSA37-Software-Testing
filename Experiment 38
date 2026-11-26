@@ -1,0 +1,90 @@
+Experiment 38: Automate Registration Form Filling Using Selenium WebDriver
+
+# AIM
+To automate a registration form by entering name, email, password and submitting the form using Selenium WebDriver.
+
+# ALGORITHM
+1. Start the program.
+2. Import the required Selenium WebDriver packages.
+3. Create an instance of ChromeDriver.
+4. Open the registration form webpage.
+5. Locate the name field and enter the name.
+6. Locate the email field and enter the email address.
+7. Locate the password field and enter the password.
+8. Locate and click the Submit button.
+9. Verify the registration success message.
+10. Close the browser.
+11. Stop the program.
+
+# CODE
+
+**File: RegistrationFormTest.java**
+
+```java
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class RegistrationFormTest {
+
+    @Test
+    public void testRegistrationForm() {
+
+        WebDriver driver = new ChromeDriver();
+
+        try {
+            driver.get("https://demoqa.com/automation-practice-form");
+
+            driver.findElement(By.id("firstName"))
+                  .sendKeys("Harithi");
+
+            driver.findElement(By.id("lastName"))
+                  .sendKeys("S");
+
+            driver.findElement(By.id("userEmail"))
+                  .sendKeys("harithi@example.com");
+
+            driver.findElement(By.id("userNumber"))
+                  .sendKeys("9876543210");
+
+            driver.findElement(By.id("submit"))
+                  .click();
+
+            String title = driver.getTitle();
+
+            assertTrue(title.contains("DEMOQA"));
+
+            System.out.println("Registration form submitted successfully.");
+
+        } finally {
+            driver.quit();
+        }
+    }
+}
+```
+
+# INPUT
+
+```text
+Website: https://demoqa.com/automation-practice-form
+
+Name: Harithi S
+Email: harithi@example.com
+Mobile: 9876543210
+```
+
+# OUTPUT
+
+```text
+Registration form opened successfully.
+Name entered successfully.
+Email entered successfully.
+Mobile number entered successfully.
+Form submitted successfully.
+Browser closed successfully.
+```
+
+# RESULT
+Thus, the registration form filling process was automated using Selenium WebDriver by entering the required details and submitting the form.

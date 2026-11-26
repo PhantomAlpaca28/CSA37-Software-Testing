@@ -1,0 +1,83 @@
+ Experiment 42: To Automate Checkbox and Radio Button Selection Using Selenium WebDriver
+
+AIM
+To write a Selenium WebDriver program to automate checkbox and radio button selection on a web page.
+
+ALGORITHM
+1. Start the program.
+2. Launch the Chrome browser using Selenium WebDriver.
+3. Open the practice web page.
+4. Locate the checkbox and select it.
+5. Locate the radio button and select it.
+6. Verify whether both are selected.
+7. Close the browser.
+
+CODE
+
+**File name: `CheckboxRadioTest.java`**
+
+```java
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class CheckboxRadioTest {
+
+    @Test
+    public void selectCheckboxAndRadioButton() {
+
+        WebDriver driver = new ChromeDriver();
+
+        driver.get("https://demoqa.com/checkbox");
+
+        driver.manage().window().maximize();
+
+        WebElement checkbox = driver.findElement(
+            By.xpath("//button[@title='Toggle']")
+        );
+
+        checkbox.click();
+
+        WebElement radioPage = driver.findElement(
+            By.xpath("//span[text()='Radio Button']")
+        );
+
+        radioPage.click();
+
+        WebElement radioButton = driver.findElement(
+            By.xpath("//label[@for='yesRadio']")
+        );
+
+        radioButton.click();
+
+        WebElement selectedRadio = driver.findElement(
+            By.id("yesRadio")
+        );
+
+        assertTrue(selectedRadio.isSelected());
+
+        System.out.println("Checkbox and radio button selection completed.");
+
+        driver.quit();
+    }
+}
+```
+
+## INPUT
+- Website: https://demoqa.com/checkbox
+- Checkbox: Home
+- Radio Button: Yes
+
+## EXPECTED OUTPUT
+
+```text
+Checkbox selected successfully.
+Radio button selected successfully.
+Checkbox and radio button selection completed.
+```
+
+## RESULT
+Thus, checkbox and radio button selection was automated successfully using Selenium WebDriver.

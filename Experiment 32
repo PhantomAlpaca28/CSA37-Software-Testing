@@ -1,0 +1,88 @@
+Experiment 32: Perform String Comparison Using JUnit Assertions
+
+# AIM
+To write a Java program to compare two strings and validate the output using JUnit assertions.
+
+# ALGORITHM
+1. Start the program.
+2. Declare two strings.
+3. Initialize the two strings with values.
+4. Compare both strings using the `equals()` method.
+5. If both strings are equal, return true.
+6. Otherwise, return false.
+7. Display the comparison result.
+8. Validate the output using JUnit assertions.
+9. Stop the program.
+
+# CODE
+
+**File 1: StringComparison.java**
+
+```java
+public class StringComparison {
+
+    public static boolean compareStrings(String str1, String str2) {
+        return str1.equals(str2);
+    }
+
+    public static void main(String[] args) {
+
+        String str1 = "Java";
+        String str2 = "Java";
+
+        boolean result = compareStrings(str1, str2);
+
+        if (result) {
+            System.out.println("Strings are equal");
+        } else {
+            System.out.println("Strings are not equal");
+        }
+    }
+}
+```
+
+**File 2: StringComparisonTest.java**
+
+```java
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
+public class StringComparisonTest {
+
+    @Test
+    public void testEqualStrings() {
+        assertTrue(StringComparison.compareStrings("Java", "Java"));
+    }
+
+    @Test
+    public void testDifferentStrings() {
+        assertFalse(StringComparison.compareStrings("Java", "Python"));
+    }
+
+    @Test
+    public void testCaseSensitiveComparison() {
+        assertFalse(StringComparison.compareStrings("Java", "JAVA"));
+    }
+
+    @Test
+    public void testEmptyStrings() {
+        assertTrue(StringComparison.compareStrings("", ""));
+    }
+}
+```
+
+# INPUT
+
+```text
+First String: Java
+Second String: Java
+```
+
+# OUTPUT
+
+```text
+Strings are equal
+```
+
+# RESULT
+Thus, the Java program to perform string comparison was developed, and the output can be validated using JUnit assertions.

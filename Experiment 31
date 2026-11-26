@@ -1,0 +1,90 @@
+Experiment 31: Reverse a Given Word Using JUnit Assertions
+
+# AIM
+To write a Java program to reverse a given word and validate the output using JUnit assertions.
+
+# ALGORITHM
+1. Start the program.
+2. Declare and initialize a word.
+3. Initialize an empty string to store the reversed word.
+4. Traverse the given word from the last character to the first character.
+5. Add each character to the reversed string.
+6. Return the reversed word.
+7. Validate the output using JUnit assertions.
+8. Stop the program.
+
+# CODE
+
+**File 1: ReverseWord.java**
+
+```java
+public class ReverseWord {
+
+    public static String reverse(String word) {
+
+        String reversed = "";
+
+        for (int i = word.length() - 1; i >= 0; i--) {
+            reversed = reversed + word.charAt(i);
+        }
+
+        return reversed;
+    }
+
+    public static void main(String[] args) {
+
+        String word = "HELLO";
+
+        String result = reverse(word);
+
+        System.out.println("Original Word: " + word);
+        System.out.println("Reversed Word: " + result);
+    }
+}
+```
+
+**File 2: ReverseWordTest.java**
+
+```java
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
+public class ReverseWordTest {
+
+    @Test
+    public void testNormalWord() {
+        assertEquals("OLLEH", ReverseWord.reverse("HELLO"));
+    }
+
+    @Test
+    public void testSingleCharacter() {
+        assertEquals("A", ReverseWord.reverse("A"));
+    }
+
+    @Test
+    public void testPalindromeWord() {
+        assertEquals("MADAM", ReverseWord.reverse("MADAM"));
+    }
+
+    @Test
+    public void testEmptyString() {
+        assertEquals("", ReverseWord.reverse(""));
+    }
+}
+```
+
+# INPUT
+
+```text
+Word: HELLO
+```
+
+# OUTPUT
+
+```text
+Original Word: HELLO
+Reversed Word: OLLEH
+```
+
+# RESULT
+Thus, the Java program to reverse a given word was developed, and the output can be validated using JUnit assertions.

@@ -1,0 +1,96 @@
+Experiment 33: Validate Voting Eligibility Based on Age Using JUnit Assertions
+
+# AIM
+To write a Java program to check voting eligibility based on age and validate the output using JUnit assertions.
+
+# ALGORITHM
+1. Start the program.
+2. Declare a variable to store the age.
+3. Read the person's age.
+4. Check whether the age is 18 or above.
+5. If the age is 18 or above, display "Eligible to Vote".
+6. Otherwise, display "Not Eligible to Vote".
+7. Validate the output using JUnit assertions.
+8. Stop the program.
+
+# CODE
+
+**File 1: VotingEligibility.java**
+
+```java
+public class VotingEligibility {
+
+    public static String checkEligibility(int age) {
+
+        if (age < 0) {
+            return "Invalid Age";
+        }
+        else if (age >= 18) {
+            return "Eligible to Vote";
+        }
+        else {
+            return "Not Eligible to Vote";
+        }
+    }
+
+    public static void main(String[] args) {
+
+        int age = 20;
+
+        String result = checkEligibility(age);
+
+        System.out.println("Age: " + age);
+        System.out.println(result);
+    }
+}
+```
+
+**File 2: VotingEligibilityTest.java**
+
+```java
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
+public class VotingEligibilityTest {
+
+    @Test
+    public void testEligibleAge() {
+        assertEquals("Eligible to Vote",
+                VotingEligibility.checkEligibility(20));
+    }
+
+    @Test
+    public void testMinimumEligibleAge() {
+        assertEquals("Eligible to Vote",
+                VotingEligibility.checkEligibility(18));
+    }
+
+    @Test
+    public void testNotEligibleAge() {
+        assertEquals("Not Eligible to Vote",
+                VotingEligibility.checkEligibility(16));
+    }
+
+    @Test
+    public void testInvalidAge() {
+        assertEquals("Invalid Age",
+                VotingEligibility.checkEligibility(-5));
+    }
+}
+```
+
+# INPUT
+
+```text
+Age: 20
+```
+
+# OUTPUT
+
+```text
+Age: 20
+Eligible to Vote
+```
+
+# RESULT
+Thus, the Java program to validate voting eligibility based on age was developed, and the output can be validated using JUnit assertions.

@@ -1,0 +1,108 @@
+Experiment 34: Calculate Simple Interest Based on Customer Type Using JUnit Assertions
+
+# AIM
+To write a Java program to calculate simple interest based on customer type and validate the output using JUnit assertions.
+
+# ALGORITHM
+1. Start the program.
+2. Read the principal amount, time and customer type.
+3. Check the customer type.
+4. Assign the interest rate based on the customer type.
+5. Calculate simple interest using the formula.
+6. Display the customer type and simple interest.
+7. Validate the output using JUnit assertions.
+8. Stop the program.
+
+# CODE
+
+**File 1: SimpleInterest.java**
+
+```java
+public class SimpleInterest {
+
+    public static double calculateInterest(double principal, double time, String customerType) {
+
+        double rate;
+
+        if (customerType.equalsIgnoreCase("Regular")) {
+            rate = 5;
+        }
+        else if (customerType.equalsIgnoreCase("Premium")) {
+            rate = 8;
+        }
+        else {
+            return -1;
+        }
+
+        return (principal * rate * time) / 100;
+    }
+
+    public static void main(String[] args) {
+
+        double principal = 10000;
+        double time = 2;
+        String customerType = "Premium";
+
+        double interest = calculateInterest(principal, time, customerType);
+
+        System.out.println("Customer Type: " + customerType);
+        System.out.println("Principal Amount: " + principal);
+        System.out.println("Time: " + time + " years");
+        System.out.println("Simple Interest: " + interest);
+    }
+}
+```
+
+**File 2: SimpleInterestTest.java**
+
+```java
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
+public class SimpleInterestTest {
+
+    @Test
+    public void testRegularCustomer() {
+        assertEquals(1000.0,
+                SimpleInterest.calculateInterest(10000, 2, "Regular"), 0.001);
+    }
+
+    @Test
+    public void testPremiumCustomer() {
+        assertEquals(1600.0,
+                SimpleInterest.calculateInterest(10000, 2, "Premium"), 0.001);
+    }
+
+    @Test
+    public void testZeroPrincipal() {
+        assertEquals(0.0,
+                SimpleInterest.calculateInterest(0, 2, "Regular"), 0.001);
+    }
+
+    @Test
+    public void testInvalidCustomer() {
+        assertEquals(-1.0,
+                SimpleInterest.calculateInterest(10000, 2, "Other"), 0.001);
+    }
+}
+```
+
+# INPUT
+
+```text
+Customer Type: Premium
+Principal Amount: 10000
+Time: 2 years
+```
+
+# OUTPUT
+
+```text
+Customer Type: Premium
+Principal Amount: 10000.0
+Time: 2.0 years
+Simple Interest: 1600.0
+```
+
+# RESULT
+Thus, the Java program to calculate simple interest based on customer type was developed, and the output can be validated using JUnit assertions.

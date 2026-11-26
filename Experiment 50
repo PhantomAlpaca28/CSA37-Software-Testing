@@ -1,0 +1,80 @@
+ Experiment 50: To Perform Smoke and Load Testing on a Newly Deployed Government Service Website to Verify Availability and Performance of Critical Pages
+
+AIM
+To perform smoke testing and load testing on a newly deployed government service website using Apache JMeter to verify the availability and performance of critical pages.
+
+ALGORITHM
+1. Start Apache JMeter.
+2. Create a new Test Plan.
+3. Add a Thread Group to the Test Plan.
+4. Configure one user for smoke testing.
+5. Add HTTP Request Samplers for critical website pages.
+6. Enter the government website URL and select the GET method.
+7. Add Response Assertions to verify successful HTTP status codes.
+8. Run the smoke test and check page availability.
+9. Increase the number of users to 100 for load testing.
+10. Configure the ramp-up period and loop count.
+11. Run the load test and collect performance results.
+12. Analyze response time, throughput, and error rate.
+
+CONFIGURATION
+
+| Parameter | Smoke Testing | Load Testing |
+|---|---|---|
+| Testing Tool | Apache JMeter | Apache JMeter |
+| Number of Users | 1 | 100 |
+| Ramp-up Period | 1 second | 50 seconds |
+| Loop Count | 1 | 1 |
+| Request Method | GET | GET |
+| Test Type | Availability | Performance |
+
+## INPUT
+
+**Sample website URL:**
+
+```text
+https://example.gov.in
+```
+
+**Critical pages to test:**
+1. Home Page
+2. Login Page
+3. Registration Page
+4. Service Information Page
+
+**Request Method:** GET
+
+**Expected HTTP Status Code:** 200 OK
+
+## OUTPUT
+
+**Smoke Testing Output:**
+
+```text
+Smoke Testing Started
+
+Home Page: Available
+Login Page: Available
+Registration Page: Available
+Service Information Page: Available
+
+Smoke Testing Completed.
+```
+
+**Load Testing Output:**
+
+```text
+Load Testing Started
+
+Number of Users: 100
+Average Response Time: Recorded by JMeter
+Throughput: Recorded by JMeter
+Error Rate: Recorded by JMeter
+Minimum Response Time: Recorded by JMeter
+Maximum Response Time: Recorded by JMeter
+
+Load Testing Completed.
+```
+
+## RESULT
+Thus, smoke testing and load testing were designed using Apache JMeter to verify the availability and performance of critical pages on a government service website. The response time, throughput, and error rate were analyzed.

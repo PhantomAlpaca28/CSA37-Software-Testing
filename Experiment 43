@@ -1,0 +1,71 @@
+Experiment 43: To Handle JavaScript Alert Pop-ups Using Selenium WebDriver
+
+AIM
+To write a Selenium WebDriver program to handle JavaScript alert pop-ups by accepting the alert.
+
+## ALGORITHM
+1. Start the program.
+2. Launch the Chrome browser using Selenium WebDriver.
+3. Open the JavaScript alerts practice webpage.
+4. Click the button to display the JavaScript alert.
+5. Switch the control to the alert pop-up.
+6. Accept the alert by clicking OK.
+7. Close the browser.
+
+## CODE
+
+**File name: `JavaScriptAlertTest.java`**
+
+```java
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.Alert;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class JavaScriptAlertTest {
+
+    @Test
+    public void handleAlert() {
+
+        WebDriver driver = new ChromeDriver();
+
+        driver.get("https://the-internet.herokuapp.com/javascript_alerts");
+
+        driver.manage().window().maximize();
+
+        driver.findElement(By.xpath("//button[text()='Click for JS Alert']")).click();
+
+        Alert alert = driver.switchTo().alert();
+
+        String alertText = alert.getText();
+
+        System.out.println("Alert Message: " + alertText);
+
+        alert.accept();
+
+        System.out.println("Alert accepted successfully.");
+
+        assertEquals("I am a JS Alert", alertText);
+
+        driver.quit();
+    }
+}
+```
+
+## INPUT
+- Website: https://the-internet.herokuapp.com/javascript_alerts
+- Button: Click for JS Alert
+- Alert message: I am a JS Alert
+- Action: Accept (OK)
+
+## EXPECTED OUTPUT
+
+```text
+Alert Message: I am a JS Alert
+Alert accepted successfully.
+```
+
+## RESULT
+Thus, the JavaScript alert pop-up was handled successfully using Selenium WebDriver by switching to the alert and accepting it.

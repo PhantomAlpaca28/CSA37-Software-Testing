@@ -1,0 +1,84 @@
+ Experiment 49: To Test Login Functionality of a Student Portal Where Hundreds of Students Login Simultaneously and Analyze Server Stability
+
+AIM
+To test the login functionality of a student portal by simulating hundreds of students logging in simultaneously using Apache JMeter and analyze server stability.
+
+ALGORITHM
+1. Start Apache JMeter.
+2. Create a new Test Plan.
+3. Add a Thread Group to simulate multiple students.
+4. Set the number of users to 500.
+5. Set the ramp-up period and loop count.
+6. Add an HTTP Request Sampler.
+7. Enter the student portal login URL.
+8. Select the POST method.
+9. Enter valid student login credentials as request parameters.
+10. Add HTTP Header Manager and Response Assertion.
+11. Run the test and collect server response details.
+12. Analyze response time, throughput, error rate, and server stability.
+
+## CONFIGURATION
+
+| Parameter | Value |
+|---|---|
+| Testing Tool | Apache JMeter |
+| Application | Student Portal |
+| Request Method | POST |
+| Number of Users | 500 |
+| Ramp-up Period | 100 seconds |
+| Loop Count | 1 |
+| Test Type | Load Testing |
+
+## INPUT
+
+**Sample login request:**
+
+```text
+URL: https://example.com/student/login
+Method: POST
+
+Username: student001
+Password: Test@123
+```
+
+**Expected successful response:**
+
+```json
+{
+  "status": "success",
+  "message": "Login successful"
+}
+```
+
+## OUTPUT
+
+The following metrics are analyzed using Apache JMeter:
+
+| Metric | Description |
+|---|---|
+| Average Response Time | Average time taken to process login requests |
+| Throughput | Number of login requests processed per second |
+| Error Rate | Percentage of failed login requests |
+| Minimum Response Time | Lowest response time |
+| Maximum Response Time | Highest response time |
+| Server Stability | Ability to handle simultaneous login requests |
+
+**Expected output format:**
+
+```text
+Student Portal Login Load Test
+
+Total Simulated Users: 500
+Ramp-up Period: 100 seconds
+
+Login Requests: Completed
+Average Response Time: Recorded by JMeter
+Throughput: Recorded by JMeter
+Error Rate: Recorded by JMeter
+
+Server Stability: Analyzed
+Load Testing Completed.
+```
+
+## RESULT
+Thus, the student portal login functionality was tested using Apache JMeter by simulating 500 concurrent students. Server stability was analyzed using response time, throughput, and error rate.

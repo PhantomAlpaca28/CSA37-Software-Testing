@@ -1,0 +1,88 @@
+Experiment 40: Automate Logout Functionality of a Web Application Using Selenium WebDriver
+
+# AIM
+To automate the logout functionality of a web application using Selenium WebDriver and verify that the user is successfully logged out.
+
+# ALGORITHM
+1. Start the program.
+2. Import the required Selenium WebDriver packages.
+3. Create an instance of ChromeDriver.
+4. Open the web application login page.
+5. Enter valid username and password.
+6. Click the Login button.
+7. Locate and click the Logout button.
+8. Verify that the user is redirected to the login page.
+9. Validate the logout result using JUnit assertions.
+10. Close the browser.
+11. Stop the program.
+
+# CODE
+
+**File: LogoutTest.java**
+
+```java
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class LogoutTest {
+
+    @Test
+    public void testLogout() {
+
+        WebDriver driver = new ChromeDriver();
+
+        try {
+            driver.get("https://the-internet.herokuapp.com/login");
+
+            driver.findElement(By.id("username"))
+                  .sendKeys("tomsmith");
+
+            driver.findElement(By.id("password"))
+                  .sendKeys("SuperSecretPassword!");
+
+            driver.findElement(By.cssSelector("button[type='submit']"))
+                  .click();
+
+            assertTrue(driver.getCurrentUrl().contains("/secure"));
+
+            driver.findElement(By.cssSelector("a[href='/logout']"))
+                  .click();
+
+            assertTrue(driver.getCurrentUrl().contains("/login"));
+
+            System.out.println("Logout completed successfully.");
+
+        } finally {
+            driver.quit();
+        }
+    }
+}
+```
+
+# INPUT
+
+```text
+Website: https://the-internet.herokuapp.com/login
+
+Username: tomsmith
+Password: SuperSecretPassword!
+Action: Login and Logout
+```
+
+# OUTPUT
+
+```text
+Login page opened successfully.
+Username entered successfully.
+Password entered successfully.
+Login successful.
+Logout button clicked.
+User logged out successfully.
+Browser closed successfully.
+```
+
+# RESULT
+Thus, the logout functionality of a web application was automated using Selenium WebDriver, and successful logout was verified using JUnit assertions.

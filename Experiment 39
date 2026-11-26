@@ -1,0 +1,90 @@
+Experiment 39: Automate Login into ARMS Portal and Validate Error Message for Invalid Credentials Using Selenium
+
+# AIM
+To automate the login process into the ARMS portal using Selenium WebDriver and validate the error message displayed for invalid login credentials.
+
+# ALGORITHM
+1. Start the program.
+2. Import the required Selenium WebDriver packages.
+3. Create an instance of ChromeDriver.
+4. Open the ARMS portal login page.
+5. Locate the username field and enter an invalid username.
+6. Locate the password field and enter an invalid password.
+7. Click the Login button.
+8. Capture the error message displayed on the screen.
+9. Validate the error message using JUnit assertions.
+10. Close the browser.
+11. Stop the program.
+
+# CODE
+
+**File: ARMSInvalidLoginTest.java**
+
+```java
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class ARMSInvalidLoginTest {
+
+    @Test
+    public void testInvalidLogin() {
+
+        WebDriver driver = new ChromeDriver();
+
+        try {
+            driver.get("https://arms.srmist.edu.in/");
+
+            driver.findElement(By.id("username"))
+                  .sendKeys("invaliduser123");
+
+            driver.findElement(By.id("password"))
+                  .sendKeys("wrongpassword123");
+
+            driver.findElement(By.id("login"))
+                  .click();
+
+            WebElement errorMessage =
+                driver.findElement(By.id("errorMessage"));
+
+            String actualMessage = errorMessage.getText();
+
+            System.out.println("Error Message: " + actualMessage);
+
+            assertTrue(actualMessage.length() > 0);
+
+            System.out.println("Invalid login validation successful.");
+
+        } finally {
+            driver.quit();
+        }
+    }
+}
+```
+
+# INPUT
+
+```text
+URL: https://arms.srmist.edu.in/
+
+Username: invaliduser123
+Password: wrongpassword123
+```
+
+# OUTPUT
+
+```text
+ARMS Portal opened successfully.
+Invalid username entered.
+Invalid password entered.
+Login button clicked.
+Error message displayed.
+Invalid login validation successful.
+Browser closed successfully.
+```
+
+# RESULT
+Thus, the ARMS portal login process was automated using Selenium WebDriver, and the error message for invalid credentials was validated using JUnit assertions.

@@ -1,0 +1,80 @@
+Experiment 37: Automate Search Functionality in Google Using Selenium WebDriver
+
+# AIM
+To automate the search functionality in Google using Selenium WebDriver and verify the search results.
+
+# ALGORITHM
+1. Start the program.
+2. Import the required Selenium WebDriver packages.
+3. Create an instance of ChromeDriver.
+4. Open the Google website.
+5. Locate the search box using its name attribute.
+6. Enter the search keyword.
+7. Press the Enter key to perform the search.
+8. Verify that the search results page is displayed.
+9. Close the browser.
+10. Stop the program.
+
+# CODE
+
+**File: GoogleSearchTest.java**
+
+```java
+import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class GoogleSearchTest {
+
+    @Test
+    public void testGoogleSearch() {
+
+        WebDriver driver = new ChromeDriver();
+
+        try {
+            driver.get("https://www.google.com");
+
+            driver.findElement(By.name("q"))
+                  .sendKeys("Java Programming");
+
+            driver.findElement(By.name("q"))
+                  .sendKeys(Keys.ENTER);
+
+            String title = driver.getTitle();
+
+            System.out.println("Page Title: " + title);
+
+            assertTrue(title.toLowerCase().contains("java programming"));
+
+            System.out.println("Google search completed successfully.");
+
+        } finally {
+            driver.quit();
+        }
+    }
+}
+```
+
+# INPUT
+
+```text
+Website: https://www.google.com
+Search Keyword: Java Programming
+Browser: Google Chrome
+```
+
+# OUTPUT
+
+```text
+Google website opened successfully.
+Search Keyword: Java Programming
+Search results displayed successfully.
+Google search completed successfully.
+Browser closed successfully.
+```
+
+# RESULT
+Thus, the Google search functionality was automated successfully using Selenium WebDriver, and the search results were verified.

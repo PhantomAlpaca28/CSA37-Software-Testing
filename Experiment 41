@@ -1,0 +1,84 @@
+Experiment 41: Automate Dropdown Selection Using selectByVisibleText() in Selenium WebDriver
+
+# AIM
+To automate dropdown selection using the `selectByVisibleText()` method in Selenium WebDriver and verify the selected option.
+
+# ALGORITHM
+1. Start the program.
+2. Import the required Selenium WebDriver packages.
+3. Create an instance of ChromeDriver.
+4. Open the practice webpage.
+5. Locate the dropdown element.
+6. Create a Select class object.
+7. Use `selectByVisibleText()` to select the required option.
+8. Verify the selected option using `getFirstSelectedOption()`.
+9. Validate the result using JUnit assertions.
+10. Close the browser.
+11. Stop the program.
+
+# CODE
+
+**File: DropdownSelectionTest.java**
+
+```java
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class DropdownSelectionTest {
+
+    @Test
+    public void testDropdownSelection() {
+
+        WebDriver driver = new ChromeDriver();
+
+        try {
+            driver.get("https://the-internet.herokuapp.com/dropdown");
+
+            WebElement dropdown =
+                driver.findElement(By.id("dropdown"));
+
+            Select select = new Select(dropdown);
+
+            select.selectByVisibleText("Option 2");
+
+            String selectedOption =
+                select.getFirstSelectedOption().getText();
+
+            System.out.println("Selected Option: " + selectedOption);
+
+            assertEquals("Option 2", selectedOption);
+
+            System.out.println("Dropdown selection successful.");
+
+        } finally {
+            driver.quit();
+        }
+    }
+}
+```
+
+# INPUT
+
+```text
+Website: https://the-internet.herokuapp.com/dropdown
+Dropdown Option: Option 2
+Selection Method: selectByVisibleText()
+```
+
+# OUTPUT
+
+```text
+Practice webpage opened successfully.
+Dropdown located successfully.
+Selected Option: Option 2
+Dropdown selection successful.
+Browser closed successfully.
+```
+
+# RESULT
+Thus, the dropdown selection was automated using the `selectByVisibleText()` method in Selenium WebDriver, and the selected option was validated using JUnit assertions.

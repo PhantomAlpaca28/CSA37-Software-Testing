@@ -1,0 +1,110 @@
+Experiment 48: To Perform POST Request Performance Testing with JSON Payload for a User Registration Service and Evaluate System Behaviour for Valid and Invalid Inputs
+
+ AIM
+To perform POST request performance testing with JSON payload for a user registration service using Apache JMeter and evaluate system behaviour for valid and invalid inputs.
+
+## ALGORITHM
+1. Start Apache JMeter.
+2. Create a new Test Plan.
+3. Add a Thread Group to simulate multiple users.
+4. Set the number of users, ramp-up period, and loop count.
+5. Add an HTTP Request Sampler.
+6. Select the POST method and enter the registration API URL.
+7. Add HTTP Header Manager with Content-Type as application/json.
+8. Enter a valid JSON payload in the request body.
+9. Send the request and verify the response status code and response data.
+10. Repeat the test with invalid input data.
+11. Compare response time, throughput, and error rate.
+12. Generate the performance report.
+
+## CONFIGURATION
+
+| Parameter | Value |
+|---|---|
+| Testing Tool | Apache JMeter |
+| API Type | REST API |
+| Request Method | POST |
+| Number of Users | 10 |
+| Ramp-up Period | 10 seconds |
+| Loop Count | 1 |
+| Content Type | application/json |
+
+## INPUT
+
+**1. Valid JSON payload**
+
+```json
+{
+  "name": "Harithi",
+  "email": "harithi@example.com",
+  "password": "Test@123"
+}
+```
+
+**Expected response:**
+
+```json
+{
+  "message": "User registered successfully",
+  "status": "success"
+}
+```
+
+**2. Invalid JSON payload**
+
+```json
+{
+  "name": "",
+  "email": "invalid-email",
+  "password": "123"
+}
+```
+
+**Expected response:**
+
+```json
+{
+  "message": "Invalid registration details",
+  "status": "error"
+}
+```
+
+## OUTPUT
+
+The following results are analyzed using Apache JMeter:
+
+| Test Case | Expected Status | Expected Behaviour |
+|---|---|---|
+| Valid input | 201 Created | User registered successfully |
+| Invalid email | 400 Bad Request | Validation error |
+| Empty name | 400 Bad Request | Name validation error |
+| Weak password | 400 Bad Request | Password validation error |
+
+**Performance metrics:**
+- Average Response Time
+- Minimum Response Time
+- Maximum Response Time
+- Throughput
+- Error Rate
+
+**Expected output format:**
+
+```text
+User Registration API Performance Test
+
+Valid Input:
+Status Code: 201 Created
+Response: User registered successfully
+
+Invalid Input:
+Status Code: 400 Bad Request
+Response: Invalid registration details
+
+Performance Testing Completed.
+Response Time: Recorded by JMeter
+Throughput: Recorded by JMeter
+Error Rate: Recorded by JMeter
+```
+
+## RESULT
+Thus, POST request performance testing was performed for a user registration service using JSON payloads. The system behaviour for valid and invalid inputs was evaluated using response status codes, response data, and performance metrics.

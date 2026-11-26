@@ -1,0 +1,65 @@
+ Experiment 46: To Perform Load Testing on ARMS Homepage During Peak Time by Simulating 500 Concurrent Users and Analyze Response Time, Throughput and Error Rate
+
+ AIM
+To perform load testing on the ARMS homepage using Apache JMeter by simulating 500 concurrent users and analyzing response time, throughput, and error rate.
+
+ALGORITHM
+1. Start Apache JMeter.
+2. Create a new Test Plan.
+3. Add a Thread Group to the Test Plan.
+4. Set the number of threads (users) to 500.
+5. Set the ramp-up period and loop count.
+6. Add an HTTP Request Sampler.
+7. Enter the ARMS homepage URL: `https://arms.srmist.edu.in/`.
+8. Add Summary Report and Aggregate Report listeners.
+9. Run the test and collect performance results.
+10. Analyze response time, throughput, and error rate.
+
+## PROCEDURE / CONFIGURATION
+
+| Parameter | Value |
+|---|---|
+| Testing tool | Apache JMeter |
+| Target website | https://arms.srmist.edu.in/ |
+| Number of users | 500 |
+| Ramp-up period | 100 seconds |
+| Loop count | 1 |
+| Request method | GET |
+| Protocol | HTTPS |
+
+## INPUT
+- URL: `https://arms.srmist.edu.in/`
+- Concurrent users: 500
+- Ramp-up period: 100 seconds
+- Loop count: 1
+
+## OUTPUT
+
+The following metrics are obtained from the JMeter Summary Report and Aggregate Report:
+
+| Metric | Description |
+|---|---|
+| Average Response Time | Average time taken by the server to respond |
+| Throughput | Number of requests processed per second |
+| Error Rate | Percentage of failed requests |
+| Minimum Response Time | Lowest response time |
+| Maximum Response Time | Highest response time |
+
+**Expected output format:**
+
+```text
+Test Plan: ARMS Homepage Load Test
+Target Users: 500
+Ramp-up Period: 100 seconds
+
+Average Response Time: Recorded by JMeter
+Throughput: Recorded by JMeter
+Error Rate: Recorded by JMeter
+Minimum Response Time: Recorded by JMeter
+Maximum Response Time: Recorded by JMeter
+
+Load Test Completed.
+```
+
+## RESULT
+Thus, load testing of the ARMS homepage was designed using Apache JMeter with 500 simulated concurrent users. Response time, throughput, and error rate can be analyzed using the JMeter reports.

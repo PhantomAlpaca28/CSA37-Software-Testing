@@ -1,0 +1,111 @@
+Experiment 35: Check Whether a Given Number Is Palindrome Using JUnit Assertions
+
+# AIM
+To write a Java program to check whether a given number is a palindrome and validate the output using JUnit assertions.
+
+# ALGORITHM
+1. Start the program.
+2. Read the given number.
+3. Store the original number.
+4. Initialize the reversed number as zero.
+5. Extract the last digit using the modulo operator (`% 10`).
+6. Add the digit to the reversed number.
+7. Remove the last digit using integer division (`/ 10`).
+8. Repeat until the number becomes zero.
+9. Compare the reversed number with the original number.
+10. If both are equal, it is a palindrome; otherwise, it is not.
+11. Validate the output using JUnit assertions.
+12. Stop the program.
+
+# CODE
+
+**File 1: PalindromeNumber.java**
+
+```java
+public class PalindromeNumber {
+
+    public static boolean isPalindrome(int number) {
+
+        if (number < 0) {
+            return false;
+        }
+
+        int original = number;
+        int reversed = 0;
+
+        while (number > 0) {
+            int digit = number % 10;
+            reversed = reversed * 10 + digit;
+            number = number / 10;
+        }
+
+        return original == reversed;
+    }
+
+    public static void main(String[] args) {
+
+        int number = 121;
+
+        if (isPalindrome(number)) {
+            System.out.println(number + " is a Palindrome");
+        } else {
+            System.out.println(number + " is not a Palindrome");
+        }
+    }
+}
+```
+
+**File 2: PalindromeNumberTest.java**
+
+```java
+import static org.junit.jupiter.api.Assertions.*;
+import org.junit.jupiter.api.Test;
+
+public class PalindromeNumberTest {
+
+    @Test
+    public void testPalindromeNumber() {
+        assertTrue(PalindromeNumber.isPalindrome(121));
+    }
+
+    @Test
+    public void testAnotherPalindrome() {
+        assertTrue(PalindromeNumber.isPalindrome(1331));
+    }
+
+    @Test
+    public void testNonPalindromeNumber() {
+        assertFalse(PalindromeNumber.isPalindrome(123));
+    }
+
+    @Test
+    public void testSingleDigit() {
+        assertTrue(PalindromeNumber.isPalindrome(7));
+    }
+
+    @Test
+    public void testNegativeNumber() {
+        assertFalse(PalindromeNumber.isPalindrome(-121));
+    }
+
+    @Test
+    public void testZero() {
+        assertTrue(PalindromeNumber.isPalindrome(0));
+    }
+}
+```
+
+# INPUT
+
+```text
+Number: 121
+```
+
+# OUTPUT
+
+```text
+121 is a Palindrome
+```
+
+# RESULT
+Thus, the Java program to check whether a given number is a palindrome was developed, and the output can be validated using JUnit assertions.

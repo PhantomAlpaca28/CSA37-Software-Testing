@@ -1,0 +1,69 @@
+Experiment 45: To Capture a Screenshot of a Web Page and Store It in the Local System Using Selenium WebDriver
+
+AIM
+To write a Selenium WebDriver program to capture a screenshot of a web page and save it in the local system.
+
+ALGORITHM
+1. Start the program.
+2. Launch the Chrome browser using Selenium WebDriver.
+3. Open the required website.
+4. Maximize the browser window.
+5. Capture the screenshot using the `TakesScreenshot` interface.
+6. Save the screenshot in the local system using `FileHandler.copy()`.
+7. Display the screenshot saved message.
+8. Close the browser.
+
+## CODE
+
+**File name: `ScreenshotTest.java`**
+
+```java
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
+import org.openqa.selenium.io.FileHandler;
+import org.junit.jupiter.api.Test;
+import java.io.File;
+import java.io.IOException;
+
+public class ScreenshotTest {
+
+    @Test
+    public void captureScreenshot() throws IOException {
+
+        WebDriver driver = new ChromeDriver();
+
+        driver.get("https://www.google.com");
+
+        driver.manage().window().maximize();
+
+        File source = ((TakesScreenshot) driver)
+                .getScreenshotAs(OutputType.FILE);
+
+        File destination = new File("screenshot.png");
+
+        FileHandler.copy(source, destination);
+
+        System.out.println("Screenshot captured successfully.");
+        System.out.println("Saved as: screenshot.png");
+
+        driver.quit();
+    }
+}
+```
+
+## INPUT
+- Website: https://www.google.com
+- Browser: Google Chrome
+- Screenshot file name: `screenshot.png`
+
+## EXPECTED OUTPUT
+
+```text
+Screenshot captured successfully.
+Saved as: screenshot.png
+```
+
+## RESULT
+Thus, the screenshot of the web page was captured and stored successfully in the local system using Selenium WebDriver.

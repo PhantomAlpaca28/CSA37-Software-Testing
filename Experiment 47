@@ -1,0 +1,91 @@
+ Experiment 47: To Test a Mobile Banking REST API for Balance Enquiry Requests by Simulating Multiple Users and Verifying Status Codes, Response Data and Response Time
+
+ AIM
+To test a mobile banking REST API for balance enquiry requests by simulating multiple users and verifying status codes, response data, and response time using Apache JMeter.
+
+ALGORITHM
+1. Start Apache JMeter.
+2. Create a new Test Plan.
+3. Add a Thread Group to simulate multiple users.
+4. Set the number of users, ramp-up period, and loop count.
+5. Add an HTTP Request Sampler.
+6. Select the GET method and enter the balance enquiry API URL.
+7. Add the required authentication headers if needed.
+8. Add Response Assertion to verify the HTTP status code.
+9. Add JSON Assertion to validate the balance response data.
+10. Add Summary Report to analyze response time and throughput.
+11. Run the test and verify the results.
+
+## CONFIGURATION
+
+| Parameter | Value |
+|---|---|
+| Testing Tool | Apache JMeter |
+| API Type | REST API |
+| Request Method | GET |
+| Number of Users | 10 |
+| Ramp-up Period | 10 seconds |
+| Loop Count | 5 |
+| Request Type | Balance Enquiry |
+
+**Sample API URL:**
+
+```text
+https://example.com/api/account/balance
+```
+
+*Note: Replace this sample URL with the actual authorized mobile banking API endpoint.*
+
+## INPUT
+
+Sample request:
+
+```text
+Method: GET
+Endpoint: /api/account/balance
+Account ID: 1001
+```
+
+Sample JSON response:
+
+```json
+{
+  "accountId": "1001",
+  "balance": 25000.00,
+  "currency": "INR"
+}
+```
+
+## OUTPUT
+
+The following results are verified using Apache JMeter:
+
+| Metric | Expected result |
+|---|---|
+| HTTP Status Code | 200 OK |
+| Account ID | 1001 |
+| Balance | 25000.00 |
+| Currency | INR |
+| Response Time | Recorded by JMeter |
+| Error Rate | Recorded by JMeter |
+| Throughput | Recorded by JMeter |
+
+**Expected output format:**
+
+```text
+Mobile Banking API Test Started
+
+Number of Users: 10
+Request: Balance Enquiry
+
+Status Code: 200 OK
+Account ID: 1001
+Balance: 25000.00 INR
+Response Data: Verified
+Response Time: Recorded by JMeter
+
+API Testing Completed Successfully.
+```
+
+## RESULT
+Thus, the mobile banking REST API balance enquiry functionality was tested using Apache JMeter by simulating multiple users and verifying status codes, response data, and response time.

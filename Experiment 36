@@ -1,0 +1,68 @@
+Experiment 36: Open Chrome Browser Using Selenium WebDriver and Verify the Title of ARMS Portal
+
+# AIM
+To open the Chrome browser using Selenium WebDriver, navigate to the ARMS portal and verify the page title.
+
+# ALGORITHM
+1. Start the program.
+2. Import the required Selenium WebDriver packages.
+3. Create an instance of ChromeDriver.
+4. Open the Chrome browser.
+5. Navigate to the ARMS portal URL.
+6. Get the page title using the `getTitle()` method.
+7. Verify the title using the `assertEquals()` method.
+8. Close the browser.
+9. Stop the program.
+
+# CODE
+
+**File: ARMSPortalTitleTest.java**
+
+```java
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class ARMSPortalTitleTest {
+
+    @Test
+    public void verifyARMSPortalTitle() {
+
+        WebDriver driver = new ChromeDriver();
+
+        try {
+            driver.get("https://arms.srmist.edu.in/");
+
+            String actualTitle = driver.getTitle();
+
+            System.out.println("Page Title: " + actualTitle);
+
+            assertEquals("ARMS", actualTitle);
+
+        } finally {
+            driver.quit();
+        }
+    }
+}
+```
+
+# INPUT
+
+```text
+URL: https://arms.srmist.edu.in/
+Browser: Google Chrome
+```
+
+# OUTPUT
+
+```text
+Chrome Browser opened successfully.
+ARMS Portal opened successfully.
+Page Title: ARMS
+Title verification successful.
+Browser closed successfully.
+```
+
+# RESULT
+Thus, the Chrome browser was opened using Selenium WebDriver, the ARMS portal was accessed, and the page title was verified using JUnit assertions.
